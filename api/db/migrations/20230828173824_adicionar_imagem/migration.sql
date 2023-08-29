@@ -1,13 +1,13 @@
 -- CreateTable
 CREATE TABLE "UserExample" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL PRIMARY KEY,
     "email" TEXT NOT NULL,
     "name" TEXT
 );
 
 -- CreateTable
 CREATE TABLE "Image" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "url" TEXT NOT NULL
 );

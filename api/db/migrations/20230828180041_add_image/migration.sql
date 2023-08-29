@@ -1,20 +1,25 @@
-/*
-  Warnings:
+-- Desabilitar restrições de chaves estrangeiras temporariamente
+SET CONSTRAINTS ALL DEFERRED;
 
-  - Added the required column `updatedAt` to the `Image` table without a default value. This is not possible if the table is not empty.
-
-*/
--- RedefineTables
-PRAGMA foreign_keys=OFF;
+-- Criar nova tabela "new_Image"
 CREATE TABLE "new_Image" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "url" TEXT NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL
 );
-INSERT INTO "new_Image" ("id", "title", "url") SELECT "id", "title", "url" FROM "Image";
+
+-- Inserir dados da tabela antiga na nova tabela
+INSERT INTO "new_Image" ("id", "title", "url")
+SELECT "id", "title", "url"
+FROM "Image";
+
+-- Remover a tabela antiga
 DROP TABLE "Image";
+
+-- Renomear a nova tabela para o nome original
 ALTER TABLE "new_Image" RENAME TO "Image";
-PRAGMA foreign_key_check;
-PRAGMA foreign_keys=ON;
+
+-- Habilitar novamente as restrições de chaves estrangeiras
+SET CONSTRAINTS ALL IMMEDIATE;
