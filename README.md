@@ -17,7 +17,7 @@ Esse é um projeto de Upload de arquivos e ele foi foito usando o framework Redw
 ## Front end
 - HTML / CSS / JavaScript 
 - ReactJS
--RedwoodJs
+- RedwoodJs
 ## Implantação em produção
 - Back end: Filestack
 - Banco de dados: PostgreSQL
