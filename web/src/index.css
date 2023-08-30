@@ -1,0 +1,61 @@
+.home-page {
+  background-color: #1a202c;
+}
+
+.header-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: #1a202c;
+}
+
+.div-logo {
+  width: 22vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 90px;
+  width: 80px;
+  border-radius: 40px;
+}
+
+ul {
+  width: 40vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li {
+  list-style-type: none;
+  font-size: 1.5em;
+}
+
+p,
+h1 {
+  font-family: 'Inter', sans-serif;
+  color: #f7fafc;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-home {
+  border: 2px solid gray;
+}
+
+@media (max-width: 900px) {
+  .div-logo {
+    display: none;
+  }
+
+  ul {
+    width: 80vw;
+  }
+}
