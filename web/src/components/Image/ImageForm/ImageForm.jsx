@@ -33,7 +33,6 @@ const ImageForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-
         <Label
           name="title"
           className="rw-label"
@@ -41,7 +40,6 @@ const ImageForm = (props) => {
         >
           Title
         </Label>
-
         <TextField
           name="title"
           defaultValue={props.image?.title}
@@ -49,12 +47,32 @@ const ImageForm = (props) => {
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
         />
-
         <FieldError name="title" className="rw-field-error" />
+
         <PickerInline
           apikey={process.env.REDWOOD_ENV_FILESTACK_API_KEY}
           onUploadDone={onFileUpload}
-        />
+        >
+          <div
+            style={{ display: url ? 'none' : 'block', height: '500px' }}
+          ></div>
+        </PickerInline>
+
+        {url && (
+          <div>
+            <img
+              src={url}
+              style={{ display: 'block', margin: '2rem 0' }}
+              alt="imagem_upload"
+            />
+            <button
+              onClick={() => setUrl(null)}
+              className="rw-button rw-button-blue"
+            >
+              Replace Image
+            </button>
+          </div>
+        )}
 
         <Label
           name="url"
@@ -63,16 +81,13 @@ const ImageForm = (props) => {
         >
           Url
         </Label>
-
         <TextField
           name="url"
           defaultValue={url}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
-
         <FieldError name="url" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save

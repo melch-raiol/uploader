@@ -23,7 +23,7 @@ export const updateImage = ({ id, input }) => {
   })
 }
 
-export const deleteImage = ({ id }) => {
+export const deleteImage = async ({ id }) => {
   return db.image.delete({
     where: { id },
   })

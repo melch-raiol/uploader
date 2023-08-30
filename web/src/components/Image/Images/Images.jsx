@@ -34,6 +34,12 @@ const ImagesList = ({ images }) => {
     }
   }
 
+  const thumbnail = (url) => {
+    const parts = url.split('/')
+    parts.splice(3, 0, 'resize=width:100')
+    return parts.join('/')
+  }
+
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
       <table className="rw-table">
@@ -50,7 +56,15 @@ const ImagesList = ({ images }) => {
             <tr key={image.id}>
               <td>{truncate(image.id)}</td>
               <td>{truncate(image.title)}</td>
-              <td>{truncate(image.url)}</td>
+              <td>
+                <a href={image.url} target="_blank" rel="noreferrer">
+                  <img
+                    src={thumbnail(image.url)}
+                    style={{ maxWidth: '50px' }}
+                    alt="imagem_upload"
+                  />
+                </a>
+              </td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
